@@ -1,0 +1,7 @@
+parameter unit;
+storage
+  (pair :storage
+     (address %owner)
+     (pair (string %version)
+           (pair (address %prevAddr) (pair (string %url) (signature %digiSig)))));
+code { CDR @s_slash_1 ; NIL operation ; PAIR };

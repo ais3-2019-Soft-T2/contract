@@ -15,6 +15,6 @@ let%entry newVersion ( ver, url : (tVersion * tURL) ) s =
     Current.failwith "Authentication error.";
   
   (* update *)
-  let s = s.lastVersion <- ver in
-  let s = s.lastURL <- url in
+  let s = s.latestVersion <- ver in
+  let s = s.latestURL <- url in
   ([]: operation list), s

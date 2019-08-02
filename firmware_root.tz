@@ -1,0 +1,46 @@
+parameter (pair string string);
+storage
+  (pair :storage
+     (address %owner)
+     (pair (string %latestVersion)
+           (pair (string %latestURL) (pair (string %firmwareName) (signature %digiSig)))));
+code { DUP ;
+       DIP { CDR @s_slash_1 } ;
+       CAR @_ver_url_slash_2 ;
+       DUUP @s ;
+       CAR %owner ;
+       SENDER ;
+       COMPARE ;
+       NEQ ;
+       IF { PUSH string "Authentication error." ; FAILWITH } { UNIT } ;
+       DROP ;
+       SWAP ;
+       DUP ;
+       CAR %owner ;
+       SWAP ;
+       CDR ;
+       CDR ;
+       DUUUP ;
+       CAR @ver ;
+       PAIR %latestVersion ;
+       SWAP ;
+       PAIR @s %owner ;
+       DUP ;
+       CAR %owner ;
+       SWAP ;
+       CDR ;
+       DUP ;
+       CAR %latestVersion ;
+       SWAP ;
+       CDR ;
+       CDR ;
+       DUUUUP ;
+       DIIIIP { DROP } ;
+       CDR @url ;
+       PAIR %latestURL ;
+       SWAP ;
+       PAIR %latestVersion ;
+       SWAP ;
+       PAIR @s %owner ;
+       NIL operation ;
+       PAIR };

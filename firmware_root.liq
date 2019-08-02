@@ -2,11 +2,11 @@ type tVersion = string
 type tURL     = string
 
 type storage =
-  { owner        : address
-  ; lastVersion  : tVersion
-  ; lastURL      : tURL
-  (* next *)
-  ; firmwareName : string
+  { owner          : address
+  ; latestVersion  : tVersion
+  ; latestURL      : tURL
+  ; firmwareName   : string
+  ; digiSig        : signature
   }
 
 let%entry newVersion ( ver, url : (tVersion * tURL) ) s =
